@@ -23,17 +23,17 @@ public class EmployeeController {
         return ResponseEntity.ok().body(employeeService.getEmployee(id));
     }
 
-    @GetMapping("/all")
+    @GetMapping
     ResponseEntity<Iterable<Employee>> getAll() {
         return ResponseEntity.ok().body(employeeService.getAll());
     }
 
-    @PostMapping("/add")
+    @PostMapping
     ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
         return ResponseEntity.ok().body(employeeService.saveEmployee(employee));
     }
 
-    @PutMapping("/employee/{id}")
+    @PutMapping("/{id}")
     public Employee updateEmployee(@PathVariable("id") final Long id, @RequestBody Employee employee) {
         Optional<Employee> e = employeeService.getEmployee(id);
         if(e.isPresent()) {
